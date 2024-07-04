@@ -48,12 +48,13 @@ public abstract class MessageCollection : ReactiveObject
         MessageCount = Messages.Count;
     }
 
-    public void RemoveMessage(string messageId)
+    public void RemoveMessage(string messageId, long seqNo)
     {
-        Messages.Remove(Messages.Single(msg => msg.MessageId.Equals(messageId)));
+        var match = (Message msg) => msg.MessageId.Equals(messageId) && msg.SequenceNumber.Equals(seqNo);
+        Messages.Remove(Messages.Single(match));
         MessageCount = Messages.Count;
     }
-        
+    
     public void ClearMessages()
     {
         Messages.Clear();
@@ -66,9 +67,10 @@ public abstract class MessageCollection : ReactiveObject
         DlqCount = DlqMessages.Count;
     }
         
-    public void RemoveDlqMessage(string messageId)
+    public void RemoveDlqMessage(string messageId, long seqNo)
     {
-        DlqMessages.Remove(DlqMessages.Single(msg => msg.MessageId.Equals(messageId)));
+        var match = (Message msg) => msg.MessageId.Equals(messageId) && msg.SequenceNumber.Equals(seqNo);
+        DlqMessages.Remove(DlqMessages.Single(match));
         DlqCount = DlqMessages.Count;
     }
         
