@@ -199,6 +199,7 @@ public class MainWindowViewModel : ViewModelBase
             
             serviceBusResource.AddQueues(queues.ToArray());
             serviceBusResource.AddTopics(topics.ToArray());
+            ConnectedServiceBuses.Clear();
             ConnectedServiceBuses.Add(serviceBusResource);
             LoggingService.Log("Connected to Service Bus: " + namespaceInfo.Name);
         }
