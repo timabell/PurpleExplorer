@@ -233,13 +233,13 @@ public class MainWindowViewModel : ViewModelBase
         
         try
         {
-            Messages.Clear();
-            CurrentSubscription.ClearMessages();
             var messages =
                 await _topicHelper.GetMessagesBySubscription(CurrentSubscription.Topic.ServiceBus.ConnectionString,
                     CurrentSubscription.Topic.Name,
                     CurrentSubscription.Name);
+            CurrentSubscription.ClearMessages();
             CurrentSubscription.AddMessages(messages);
+            Messages.Clear();
             Messages.AddRange(messages);
         }
         catch (Exception ex)
@@ -257,12 +257,12 @@ public class MainWindowViewModel : ViewModelBase
         
         try
         {
-            DlqMessages.Clear();
-            CurrentSubscription.ClearDlqMessages();
             var dlqMessages =
                 await _topicHelper.GetDlqMessages(CurrentSubscription.Topic.ServiceBus.ConnectionString,
                     CurrentSubscription.Topic.Name, CurrentSubscription.Name);
+            CurrentSubscription.ClearDlqMessages();
             CurrentSubscription.AddDlqMessages(dlqMessages);
+            DlqMessages.Clear();
             DlqMessages.AddRange(dlqMessages);
         }
         catch (Exception ex)
@@ -280,10 +280,10 @@ public class MainWindowViewModel : ViewModelBase
         
         try
         {
-            Messages.Clear();
-            CurrentQueue.ClearMessages();
             var messages = await _queueHelper.GetMessages(CurrentQueue.ServiceBus.ConnectionString, CurrentQueue.Name);
+            CurrentQueue.ClearMessages();
             CurrentQueue.AddMessages(messages);
+            Messages.Clear();
             Messages.AddRange(messages);
         }
         catch (Exception ex)
@@ -301,10 +301,10 @@ public class MainWindowViewModel : ViewModelBase
         
         try
         {
-            DlqMessages.Clear();
-            CurrentQueue.ClearDlqMessages();
             var messages = await _queueHelper.GetDlqMessages(CurrentQueue.ServiceBus.ConnectionString, CurrentQueue.Name);
+            CurrentQueue.ClearDlqMessages();
             CurrentQueue.AddDlqMessages(messages);
+            DlqMessages.Clear();
             DlqMessages.AddRange(messages);
         }
         catch (Exception ex)
