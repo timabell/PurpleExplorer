@@ -69,9 +69,9 @@ public class MessageDetailsWindowViewModel : ViewModelBase
                 Message, Message.IsDlq);
                 
             if(!Message.IsDlq) 
-                Subscription.RemoveMessage(Message.MessageId);
+                Subscription.RemoveMessage(Message.MessageId, Message.SequenceNumber);
             else
-                Subscription.RemoveDlqMessage(Message.MessageId);
+                Subscription.RemoveDlqMessage(Message.MessageId, Message.SequenceNumber);
         }
 
         if (Queue != null)
@@ -80,9 +80,9 @@ public class MessageDetailsWindowViewModel : ViewModelBase
             await _queueHelper.DeleteMessage(connectionString, Queue.Name, Message, Message.IsDlq);
                 
             if(!Message.IsDlq) 
-                Queue.RemoveMessage(Message.MessageId);
+                Queue.RemoveMessage(Message.MessageId, Message.SequenceNumber);
             else
-                Queue.RemoveDlqMessage(Message.MessageId);
+                Queue.RemoveDlqMessage(Message.MessageId, Message.SequenceNumber);
         }
 
         _loggingService.Log($"Message deleted, MessageId: {Message.MessageId}");
