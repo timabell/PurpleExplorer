@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using MessageBox.Avalonia.Enums;
 using PurpleExplorer.Helpers;

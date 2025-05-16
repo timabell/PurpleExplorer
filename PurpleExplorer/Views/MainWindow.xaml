@@ -166,7 +166,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Sequence Number" Binding="{Binding SequenceNumber}" />
                                 <DataGridTextColumn Header="Message Id" Binding="{Binding MessageId}" />
-                                <DataGridTextColumn Header="Content" Binding="{Binding Content}" />
+                                <DataGridTextColumn Header="Content" Binding="{Binding TruncatedOneLiner}" />
                                 <DataGridTextColumn Header="Label" Binding="{Binding Label}" />
                                 <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
                                 <DataGridTextColumn Header="Delivery Count" Binding="{Binding DeliveryCount}" />
@@ -180,7 +180,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Sequence Number" Binding="{Binding SequenceNumber}" />
                                 <DataGridTextColumn Header="Message Id" Binding="{Binding MessageId}" />
-                                <DataGridTextColumn Header="Content" Binding="{Binding Content}" />
+                                <DataGridTextColumn Header="Content" Binding="{Binding TruncatedOneLiner}" />
                                 <DataGridTextColumn Header="Label" Binding="{Binding Label}" />
                                 <DataGridTextColumn Header="Size" Binding="{Binding Size}" />
                                 <DataGridTextColumn Header="Delivery Count" Binding="{Binding DeliveryCount}" />

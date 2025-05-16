@@ -36,4 +36,7 @@ public class Message
             ? azureMessage.UserProperties["DeadLetterReason"].ToString()
             : string.Empty;
     }
+
+    public string TruncatedOneLiner =>
+        (Content.Length > 50 ? string.Concat(Content.AsSpan(0, 50), "...") : Content).Replace("\n", "\\n");
 }
